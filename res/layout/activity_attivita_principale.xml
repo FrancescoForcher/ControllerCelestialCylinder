@@ -1,0 +1,217 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".AttivitaPrincipale" >
+
+    <SeekBar
+        android:id="@+id/SeekBarAngoloID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="Imposta l&apos;angolo del cilindro"
+        android:max="64"
+        android:progress="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/buttonPiu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:onClick="onPiu"
+            android:text="+"
+            android:textColor="#C0C0C0"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/buttonMeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/buttonPiu"
+            android:layout_below="@+id/buttonPiu"
+            android:onClick="onMeno"
+            android:text="-"
+            android:textColor="#C0C0C0"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/buttonReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/buttonMeno"
+            android:layout_below="@+id/buttonMeno"
+            android:contentDescription="Imposta l&apos;angolo corrente del cilindrio come zero"
+            android:onClick="onReset"
+            android:text="Reset"
+            android:textColor="#C0C0C0" />
+
+        <RelativeLayout
+            android:id="@+id/segnaleConnessione"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@+id/buttonReset"
+            android:layout_alignRight="@+id/buttonReset"
+            android:layout_below="@+id/buttonReset"
+            android:background="#FC0000" >
+
+            <ProgressBar
+                android:id="@+id/progressBarConnessione"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <franzf.controllercilindroceleste.ControllerAngolareCustomView
+            android:id="@+id/controllerAngolareCustomView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/buttonReset"
+            android:background="#000000" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SeekBarAngoloID"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:text="Controllo Angolo"
+        android:textColor="#C0C0C0" />
+
+    <TextView
+        android:id="@+id/textViewAngoloAttuale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/SeekBarAngoloID"
+        android:text="Angolo attuale: 00°"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#C0C0C0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/SeekBarLed"
+        android:layout_alignLeft="@+id/textViewAngoloAttuale"
+        android:layout_marginBottom="30dp"
+        android:text="Controllo Led:"
+        android:textColor="#C0C0C0" />
+
+    <SeekBar
+        android:id="@+id/SeekBarLed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewAngoloAttuale"
+        android:layout_marginTop="37dp"
+        android:contentDescription="Controlla il Led"
+        android:max="255"
+        android:progress="1" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView3"
+        android:checkedButton="@+id/radioOrario"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioOrario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Orario"
+            android:textColor="#C0C0C0" />
+
+        <RadioButton
+            android:id="@+id/radioAntiorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Antiorario"
+            android:textColor="#C0C0C0" />
+
+        <RadioButton
+            android:id="@+id/radioMisto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Misto"
+            android:textColor="#C0C0C0" />
+
+        <RadioButton
+            android:id="@+id/radioLimitato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Limitato"
+            android:textColor="#C0C0C0" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroup1"
+        android:layout_below="@+id/textView2"
+        android:text="Impostazioni movimento"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#C0C0C0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SeekBarLed"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="Controllo velocità"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#C0C0C0" />
+
+    <SeekBar
+        android:id="@+id/seekBarVelocita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/radioGroup1" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonConnessione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroup1"
+        android:layout_alignParentBottom="true"
+        android:text="ToggleButton"
+        android:textOff="Non connesso"
+        android:textOn="Connesso" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seekBarVelocita"
+        android:layout_below="@+id/seekBarVelocita"
+        android:layout_marginTop="32dp"
+        android:text="Connessione"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#C0C0C0" />
+
+</RelativeLayout>
